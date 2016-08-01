@@ -6,6 +6,8 @@
   {{> navbar}}
   {{> header}}
   {{> about}}
+  {{> portfolio}}
+  {{> team}}
 </body>
 <template name="header">
   <header>
@@ -27,7 +29,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">dbtech</a>
+                <a class="navbar-logo navbar-brand page-scroll" href="#page-top">dbtech</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,12 +55,56 @@
     </nav>
 </template>
 <template name="about">
-
+  <div id="about" class="container">
+    {{#each values}}
+      {{> value}}
+    {{/each}}
+  </div>
+</template>
+<template name="value">
+  <div class="db-value">
+    <span style="font-size:4em;" class="value-span">{{ first }}</span>
+    <span style="font-size:2em" class="value-span">{{ rest }}</span>
+  </div>
+<!-- <br> -->
+   <!-- Much like you or I learn a new skill, our algorithms abstract representations that allows it to find efficiencies and patterns. -->
 </template>
 <template name="services">
 
 </template>
-<template name="portfolio">
+
+<template name="project">
+  <div class="col-lg-3 col-md-4 col-xs-6 thumb project-display">
+    <a class="thumbnail" href="#">
+        <img class="img-responsive" src="{{ imgsrc }}" alt="">
+    </a>
+  </div>
 </template>
-<template name="contact">
+
+<template name="portfolio">
+  <div class="container">
+    <div class="row">
+      {{#each projects}}
+        {{> project}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="team">
+  <div class="container">
+    <div class="row">
+      {{#each members}}
+      {{> teammember}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+<template name="teammember">
+  <style>
+    .member-div {
+      background-image:url({{prof_img}});
+    }
+    </style>
+  <div class="member-div col-md-4 col-xs-6">{{first_name}} {{last_name}}</div>
 </template>
